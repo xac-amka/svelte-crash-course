@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\..\\App.svelte",
+    "..\\..\\Player.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\timport Navbar from './Navbar.svelte'\n\timport Player from './Player.svelte'\n\n\tlet name =\"Amartaivan\";\n\tlet points = 100;\n\tlet showControls = false;\n\n\tconst addPoint = () => points +=1;\n\tconst removePoint = () => points -=1;\n\n\tconst toggleControls = () => showControls = !showControls;\n</script>\n\n<style>\n\th1 {\n\t\tcolor: purple;\n\t}\n\n\th3 {\n\t\tmargin-bottom: 10px;\n\t}\n</style>\n\n<main>\n\t<Navbar />\n\t<div class=\"container\">\n\t\t<div class=\"card\">\n\t\t\t<h1>\n\t\t\t\t{name}\n\t\t\t\t<button class=\"btn btn-md\" on:click=\"{toggleControls}\">\n\t\t\t\t\t{#if showControls}-{:else}+{/if}\n\t\t\t\t</button>\n\t\t\t</h1>\n\t\t\t<h3>Points: {points}</h3>\n\t\t\t{#if showControls}\n\t\t\t\t<button class=\"btn\" on:click={removePoint}>-1</button>\n\t\t\t\t<button class=\"btn btn-dark\" on:click={addPoint}>+1</button>\n\t\t\t\t<input type=\"number\" bind:value=\"{points}\">\n\t\t\t{/if}\n\t\t</div>\n\t</div>\n</main>\n\n",
+    "<script>\r\n\timport Navbar from './Navbar.svelte'\r\n    import { createEventDispatcher } from 'svelte';\r\n\r\n    const dispatch = createEventDispatcher();\r\n\r\n\r\n\texport let name;\r\n\texport let points;\r\n\tlet showControls = false;\r\n\r\n\tconst addPoint = () => points +=1;\r\n\tconst removePoint = () => points -=1;\r\n\r\n    const toggleControls = () => showControls = !showControls;\r\n    const onDelete = () => dispatch(\"removeplayer\", name);\r\n</script>\r\n\r\n<style>\r\n\th1 {\r\n\t\tcolor: purple;\r\n\t}\r\n\r\n\th3 {\r\n\t\tmargin-bottom: 10px;\r\n\t}\r\n</style>\r\n<div class=\"card\">\r\n    <h1>\r\n        {name}\r\n        <button class=\"btn btn-md\" on:click=\"{toggleControls}\">\r\n            {#if showControls}-{:else}+{/if}\r\n        </button>\r\n        <button class=\"btn btn-danger btn-sm\" on:click=\"{onDelete}\">x</button>\r\n    </h1>\r\n    <h3>Points: {points}</h3>\r\n    {#if showControls}\r\n        <button class=\"btn\" on:click={removePoint}>-1</button>\r\n        <button class=\"btn btn-dark\" on:click={addPoint}>+1</button>\r\n        <input type=\"number\" bind:value=\"{points}\">\r\n    {/if}\r\n</div>\r\n\r\n\r\n"
+  ],
+  "names": [],
+  "mappings": "AAeC,EAAE,cAAC,CAAC,AACH,KAAK,CAAE,MAAM,AACd,CAAC,AAED,EAAE,cAAC,CAAC,AACH,aAAa,CAAE,IAAI,AACpB,CAAC;ACFD,EAAE,cAAC,CAAC,AACH,KAAK,CAAE,MAAM,AACd,CAAC,AAED,EAAE,cAAC,CAAC,AACH,aAAa,CAAE,IAAI,AACpB,CAAC"
+}
